@@ -1,0 +1,176 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Camera.gd" type="Script" id=3]
+[ext_resource path="res://StateMachine/Player_Container.gd" type="Script" id=4]
+[ext_resource path="res://Assets/door.png" type="Texture" id=8]
+[ext_resource path="res://Enemies/Enemy2.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Enemies.gd" type="Script" id=10]
+[ext_resource path="res://Levels/Door.gd" type="Script" id=12]
+[ext_resource path="res://Coins/Coin.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Coins/Coins.gd" type="Script" id=14]
+[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Assets/4.png" type="Texture" id=16]
+[ext_resource path="res://Assets/5.png" type="Texture" id=17]
+[ext_resource path="res://Assets/1.png" type="Texture" id=18]
+[ext_resource path="res://Assets/2.png" type="Texture" id=19]
+[ext_resource path="res://Assets/3.png" type="Texture" id=20]
+[ext_resource path="res://Assets/7.png" type="Texture" id=21]
+[ext_resource path="res://Assets/6.png" type="Texture" id=22]
+
+[sub_resource type="NavigationPolygon" id=10]
+vertices = PoolVector2Array( 2680, 576, 2488, 576, 1856, 504, 1848, 448, 1072, 760, 1072, 696, 2488, 624, 2680, 640, 2352, 888, 1928, 888, 2944, -176, 2936, 1336, 2744, 1216, 2352, 960, 632, 896, 632, 816, 832, 752, 1928, 952, 1920, 1216, 1848, 1216, 1528, 1144, 64, -192, 1856, 1336, 1536, 1312, 2560, 1216, 2560, 1280, 2488, 1272, 912, 1200, 840, 1192, 848, 1144, 2488, 1336, 2088, 1328, 2088, 1304, 2088, 1264, 2688, 1328, 2688, 1272, 2744, 1272, 1400, 1144, 1400, 1264, 1344, 1264, 1344, 1328, 976, 1328, 976, 1264, 912, 1264, 704, 1096, 696, 1336, 64, 1328, 200, 888, 1920, 1256, 1344, 504, 832, 704, 768, 1128, 768, 1096, 1344, 448, 200, 832 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7, 8, 9 ), PoolIntArray( 10, 11, 7, 0 ), PoolIntArray( 7, 11, 12, 13, 8 ), PoolIntArray( 14, 15, 16, 4, 9, 17, 18, 19, 20 ), PoolIntArray( 21, 10, 0, 3 ), PoolIntArray( 19, 22, 23, 20 ), PoolIntArray( 24, 25, 26, 13 ), PoolIntArray( 27, 28, 29 ), PoolIntArray( 26, 30, 31, 32 ), PoolIntArray( 26, 32, 33, 13 ), PoolIntArray( 34, 35, 36, 11 ), PoolIntArray( 37, 38, 39, 14 ), PoolIntArray( 39, 40, 41, 42 ), PoolIntArray( 42, 43, 27 ), PoolIntArray( 14, 44, 45, 46, 47 ), PoolIntArray( 33, 48, 18, 17, 13 ), PoolIntArray( 49, 2, 1, 6, 5, 50 ), PoolIntArray( 29, 51, 52 ), PoolIntArray( 21, 3, 53 ), PoolIntArray( 50, 16, 15, 54 ), PoolIntArray( 11, 36, 12 ), PoolIntArray( 13, 12, 24 ), PoolIntArray( 14, 20, 37 ), PoolIntArray( 14, 39, 42, 27 ), PoolIntArray( 14, 27, 29 ), PoolIntArray( 14, 29, 52 ), PoolIntArray( 14, 52, 44 ), PoolIntArray( 47, 46, 21, 54 ), PoolIntArray( 54, 21, 53, 49, 50 ) ]
+outlines = [ PoolVector2Array( 64, -192, 64, 1328, 696, 1336, 704, 1096, 768, 1096, 768, 1128, 848, 1144, 840, 1192, 912, 1200, 912, 1264, 976, 1264, 976, 1328, 1344, 1328, 1344, 1264, 1400, 1264, 1400, 1144, 1528, 1144, 1536, 1312, 1856, 1336, 1848, 1216, 1920, 1216, 1920, 1256, 2088, 1264, 2088, 1304, 2088, 1328, 2488, 1336, 2488, 1272, 2560, 1280, 2560, 1216, 2744, 1216, 2744, 1272, 2688, 1272, 2688, 1328, 2936, 1336, 2944, -176 ), PoolVector2Array( 200, 832, 200, 888, 632, 896, 632, 816 ), PoolVector2Array( 832, 704, 832, 752, 1072, 760, 1072, 696 ), PoolVector2Array( 1344, 448, 1344, 504, 1856, 504, 1848, 448 ), PoolVector2Array( 1928, 888, 1928, 952, 2352, 960, 2352, 888 ), PoolVector2Array( 2488, 576, 2488, 624, 2680, 640, 2680, 576 ) ]
+
+[node name="Game" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2( 0, -220 )
+transform = Transform2D( 1, 0, 0, 1, 0, -220 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_mirroring = Vector2( 1800, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 24, 476 )
+scale = Vector2( 0.9375, 1.01481 )
+texture = ExtResource( 18 )
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.2, 0.2 )
+motion_mirroring = Vector2( 1800, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( -32, 492 )
+scale = Vector2( 0.9625, 1.05926 )
+texture = ExtResource( 19 )
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.3, 0.3 )
+motion_mirroring = Vector2( 1800, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2( -16, 516 )
+scale = Vector2( 0.9375, 1.03704 )
+texture = ExtResource( 20 )
+centered = false
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.4, 0.4 )
+motion_mirroring = Vector2( 1800, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2( 0, 508 )
+scale = Vector2( 0.933333, 0.992593 )
+texture = ExtResource( 16 )
+centered = false
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 1800, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer5"]
+texture = ExtResource( 17 )
+centered = false
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.7, 0.7 )
+motion_mirroring = Vector2( 1800, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer6"]
+position = Vector2( -48, 532 )
+scale = Vector2( 0.954167, 0.992593 )
+texture = ExtResource( 22 )
+centered = false
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1800, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer7"]
+texture = ExtResource( 21 )
+centered = false
+
+[node name="Navigation2D" type="Navigation2D" parent="."]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
+navpoly = SubResource( 10 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player_Container" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="Camera" type="Camera2D" parent="."]
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 4352
+limit_bottom = 1500
+limit_smoothed = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+drag_margin_left = 0.1
+drag_margin_top = 0.1
+drag_margin_right = 0.1
+drag_margin_bottom = 0.1
+script = ExtResource( 3 )
+
+[node name="Enemies" type="Node2D" parent="."]
+script = ExtResource( 10 )
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource( 9 )]
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource( 9 )]
+position = Vector2( 1569, 1278 )
+constraint_left = Vector2( 1569, 1278 )
+constraint_right = Vector2( 1803, 1276 )
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource( 9 )]
+position = Vector2( 2715, 513 )
+constraint_left = Vector2( 2715, 513 )
+constraint_right = Vector2( 2689, 515 )
+
+[node name="Door" type="Area2D" parent="."]
+script = ExtResource( 12 )
+
+[node name="Sprite" type="Sprite" parent="Door"]
+position = Vector2( 3461, 1746 )
+texture = ExtResource( 8 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Door"]
+position = Vector2( 2911, 1310 )
+polygon = PoolVector2Array( 24, -27.2, 24, -25.8, 31, -18.8, 31, -16.5, 32, -14.9, 32, 32, -32, 32, -32, -16, -22, -29, -19.5, -29, -14.2, -32, 14.4, -32 )
+
+[node name="Coins" type="Node2D" parent="."]
+position = Vector2( 1052, 669 )
+script = ExtResource( 14 )
+
+[node name="Coin" parent="Coins" instance=ExtResource( 13 )]
+
+[node name="Coin2" parent="Coins" instance=ExtResource( 13 )]
+position = Vector2( 906, 184 )
+
+[node name="Coin3" parent="Coins" instance=ExtResource( 13 )]
+position = Vector2( 756, -268 )
+
+[node name="Coin4" parent="Coins" instance=ExtResource( 13 )]
+position = Vector2( 1461, -133 )
+
+[node name="UI" parent="." instance=ExtResource( 15 )]
+
+[node name="Background" type="StaticBody2D" parent="."]
+collision_layer = 270
+collision_mask = 269
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background"]
+polygon = PoolVector2Array( 0, 0, 0, 1408, 3000, 1408, 3008, 0, 2944, 0, 2944, 1344, 64, 1344, 64, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="body_entered" from="Door" to="Door" method="_on_Door_body_entered"]
